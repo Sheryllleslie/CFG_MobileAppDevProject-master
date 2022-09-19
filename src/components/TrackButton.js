@@ -5,7 +5,7 @@ export default function TrackButton(props) {
   const navigation = useNavigation();
   return (
     <Pressable
-      onPress={() => navigation.navigate("Api")}
+      onPress={() => navigation.navigate("Check Meal")}
       style={styles.buttonStyle}
     >
       <Text style={styles.textStyle}> {props.ButtonText} </Text>

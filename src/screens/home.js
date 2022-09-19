@@ -1,14 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  ScrollView,
-  Button,
-  Image,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import TrackButton from "../components/TrackButton.js";
 
 export default function Home() {
