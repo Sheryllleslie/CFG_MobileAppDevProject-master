@@ -1,14 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  ScrollView,
-  Button,
-  Image,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 import TrackButton from "../components/TrackButton.js";
 
 export default function Home() {
@@ -27,11 +18,12 @@ export default function Home() {
           <View
             style={{
               flex: 1,
-              // justifyContent: "center",
+
               alignItems: "center",
               marginTop: 50,
             }}
           >
+            <Text style={styles.baseText}>Calorie Tracker</Text>
             <TrackButton ButtonText="Start tracking now!" />
           </View>
           <StatusBar style="auto" />
