@@ -8,13 +8,17 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  ScrollView,
 } from "react-native";
+import Logo from '../components/logo'
 
 export default FoodList = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [total, setTotal] = useState(0);
+
 
   const getFood = async () => {
     try {
@@ -35,6 +39,7 @@ export default FoodList = () => {
         setErrorMsg(`No result for ${query}`);
       }
       const tempData = [...jsValue, ...data];
+      setTotal(total+json.items[0].calories)
       setData(tempData);
       setQuery("");
     } catch (error) {
@@ -45,11 +50,9 @@ export default FoodList = () => {
   };
 
   return (
+    <ScrollView>
     <View style={styles.container}>
-      <Image
-        style={styles.img}
-        source={require("../../assets/cover.png")}
-      ></Image>
+      <Logo />
       <Text style={styles.baseText}>Calories Counter</Text>
       <TextInput
         style={styles.customInput}
@@ -75,7 +78,7 @@ export default FoodList = () => {
           <Text style={{ fontSize: 18, color: "#337253" }}>{errorMsg}</Text>
         </View>
       ) : null}
-
+<Text> Total: {total} </Text>
       <FlatList
         data={data}
         keyExtractor={(item) => item.name}
@@ -84,10 +87,11 @@ export default FoodList = () => {
             <Text style={styles.listItemText}>
               {item.name} {item.calories}
             </Text>
+
           </View>
         )}
       />
-    </View>
+    </View></ScrollView>
   );
 };
 const styles = StyleSheet.create({
