@@ -18,11 +18,12 @@ export default function Home() {
           <View
             style={{
               flex: 1,
-              // justifyContent: "center",
+
               alignItems: "center",
               marginTop: 50,
             }}
           >
+            <Text style={styles.baseText}>Calorie Tracker</Text>
             <TrackButton ButtonText="Start tracking now!" />
           </View>
           <StatusBar style="auto" />

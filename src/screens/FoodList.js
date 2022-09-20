@@ -5,7 +5,9 @@ import {
   View,
   Button,
   TextInput,
+  Image,
   StyleSheet,
+  Pressable,
 } from "react-native";
 
 export default FoodList = () => {
@@ -44,15 +46,23 @@ export default FoodList = () => {
 
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.img}
+        source={require("../../assets/cover.png")}
+      ></Image>
+      <Text style={styles.baseText}>Calories Counter</Text>
       <TextInput
         style={styles.customInput}
         clearButtonMode="always"
-        placeholder="Add food"
+        placeholder="Search food..."
         leftIcon={{ type: "font-awesome", name: "search" }}
         value={query}
         onChangeText={(queryText) => setQuery(queryText)}
       />
-      <Button title="Add Food" onPress={getFood} />
+      {/* <Button title="Add Food" onPress={getFood} style={styles.buttonStyle} /> */}
+      <Pressable onPress={getFood} style={styles.buttonStyle}>
+        <Text style={styles.textStyle}> Add Food </Text>
+      </Pressable>
 
       {!errorMsg.length == 0 ? (
         <View
@@ -104,9 +114,48 @@ const styles = StyleSheet.create({
   },
   customInput: {
     borderColor: "gray",
-    width: "100%",
+    width: "80%",
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 3,
     padding: 10,
+    marginTop: 50,
+    borderBottomColor: "#7DE38D",
+    borderRightColor: "#7DE38D",
+    borderBottomWidth: 3,
+    borderRightWidth: 3,
+    shadowColor: "#7DE38D",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    marginBottom: 30,
+  },
+  img: {
+    width: 420,
+    height: 130,
+  },
+  baseText: {
+    fontWeight: "bold",
+    fontSize: 40,
+    color: "#F72585",
+    paddingTop: 50,
+  },
+  buttonStyle: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: "#7DE38D",
+    width: "80%",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  textStyle: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 1,
+    color: "#00242B",
   },
 });
