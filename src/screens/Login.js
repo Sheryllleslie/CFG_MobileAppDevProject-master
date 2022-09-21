@@ -19,9 +19,13 @@ const Login = () => {
   const onSignInPressed = () => {
     console.warn("Login");
 
-    const checkUsername = checkUsernameValidity(username);
+    if (checkUsernameValidity(username)) {
+      console.log("this is from function", username);
+    }
+    const checkUsername = checkUsernameValidity(username)
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
+
 
       navigation.navigate("Main");
     } else {
@@ -40,6 +44,7 @@ const Login = () => {
 
     navigation.navigate("Register");
   };
+
 
 
   const handleCheckUsername = (text) => {
@@ -103,8 +108,9 @@ const Login = () => {
     } else {
       return <Text style={styles.errormsg}></Text>;
     }
-  };
+  
 
+  }
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -117,6 +123,7 @@ const Login = () => {
           placeholder="Username"
           value={username}
           autocapitalize="none"
+
           onChangeText={(text) => handleCheckUsername(text)}
         />
         {checkUsernameValidity(username) ? (
@@ -132,6 +139,11 @@ const Login = () => {
           onChangeText={(text) => handleCheckPassword(text)}
         />
 
+        {checkUsernameValidity(username) ? (
+          <Text style={styles.errormsg}>{checkUsernameValidity(username)}</Text>
+        ) : (
+          <Text style={styles.errormsg}></Text>
+        )}
 
         {checkPasswordValidity(password) ? (
           <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
@@ -142,7 +154,8 @@ const Login = () => {
 
         <CustomButton text="Log In" onPress={onSignInPressed} />
 
-        <CustomButton
+       <CustomButton
+
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
