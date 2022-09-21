@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  Text,
-  View,
-  Button,
-  TextInput,
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
+import React from "react";
+import { SafeAreaView, useWindowDimensions } from "react-native";
+import { WebView } from "react-native-webview";
 
 export default Contact = () => {
-  return;
+  const contentWidth = useWindowDimensions().width;
+
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <WebView
+        source={{ uri: "https://fit-lose-it.netlify.app/" }}
+        contentWidth={contentWidth}
+      />
+    </SafeAreaView>
+  );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f8f8",
-    alignItems: "center",
-  },
-});
