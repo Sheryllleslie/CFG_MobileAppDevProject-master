@@ -15,15 +15,12 @@ const Login = () => {
   const [checkValidUsername, setCheckValidUsername] = useState("");
   const [checkValidPassword, setCheckValidPassword] = useState("");
 
-
   const onSignInPressed = () => {
     console.warn("Login");
 
-    const checkUsername = checkUsernameValidity(username)
+    const checkUsername = checkUsernameValidity(username);
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
-
-
       navigation.navigate("Main");
     } else {
       navigation.navigate("Login");
@@ -41,8 +38,6 @@ const Login = () => {
 
     navigation.navigate("Register");
   };
-
-
 
   const handleCheckUsername = (text) => {
     if (setUsername(text) > 3) {
@@ -105,14 +100,22 @@ const Login = () => {
     } else {
       return <Text style={styles.errormsg}></Text>;
     }
-  
-
-  }
+  };
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        marginTop: 100,
+      }}
+    >
       <View style={styles.root}>
         <StatusBar style="auto" />
-        <Logo />
+        <Logo
+          style={{
+            flex: 1,
+          }}
+        />
         <Text style={styles.text}>Login</Text>
 
         <TextInput
@@ -120,7 +123,6 @@ const Login = () => {
           placeholder="Username"
           value={username}
           autocapitalize="none"
-
           onChangeText={(text) => handleCheckUsername(text)}
         />
         {checkUsernameValidity(username) ? (
@@ -138,15 +140,11 @@ const Login = () => {
 
         {checkPasswordValidity(password) ? (
           <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
-        ) : (
-          null
-        )}
-  
+        ) : null}
 
         <CustomButton text="Log In" onPress={onSignInPressed} />
 
-       <CustomButton
-
+        <CustomButton
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
@@ -174,10 +172,12 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "#F72585",
     paddingTop: 50,
+    paddingBottom: 30,
   },
   errormsg: {
     color: "red",
-    fontSize: 10,
+    fontSize: 16,
+    paddingTop: 5,
   },
 
   input: {
