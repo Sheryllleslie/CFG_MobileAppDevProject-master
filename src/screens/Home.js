@@ -22,7 +22,7 @@ export default function Home() {
               marginTop: 50,
             }}
           >
-             location = useLocation();
+          
             <Text style={styles.baseText}>Calorie Tracker</Text>
             <TrackButton ButtonText="Start tracking now!" />
           </View>
@@ -36,7 +36,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#4361EE",
+    // ..backgroundColor: "#4361EE",
     alignItems: "center",
     justifyContent: "center",
     backgroundImage: 'url("../../assets/bg.jpg")',
