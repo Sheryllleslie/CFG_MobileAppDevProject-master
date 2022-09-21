@@ -47,7 +47,9 @@ console.log(username, email, password, passwordRepeat)
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{
+      flex: 1,
+      backgroundColor: "white"}}>
       <View style={styles.root}>
         <Logo />
       
@@ -110,10 +112,8 @@ console.log(username, email, password, passwordRepeat)
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    minHeight: 900,
     alignItems: "center",
     backgroundColor: "white",
-    marginBottom: 30,
   },
   title: {
     fontWeight: "bold",

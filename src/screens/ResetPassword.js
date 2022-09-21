@@ -21,7 +21,13 @@ const ResetPassword = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+    >
       <View style={styles.root}>
         <StatusBar style="auto" />
         <Logo />
@@ -47,8 +53,6 @@ const ResetPassword = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    height: '100%',
-    minHeight: 600,
     alignItems: "center",
     backgroundColor: "white",
   },
