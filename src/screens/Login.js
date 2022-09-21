@@ -125,7 +125,7 @@ const Login = () => {
           placeholder="Username"
           value={username}
           autocapitalize="none"
-          //   setValue={setUsername}
+          // ..  setValue={setUsername}
           //   onChangeText={(text)=>setUsername(text)}
           onChangeText={(text) => handleCheckUsername(text)}
         />

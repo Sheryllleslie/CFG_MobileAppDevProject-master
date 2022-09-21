@@ -36,7 +36,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#4361EE",
+    // ..backgroundColor: "#4361EE",
     alignItems: "center",
     justifyContent: "center",
     backgroundImage: 'url("../../assets/bg.jpg")',
