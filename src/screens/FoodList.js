@@ -6,6 +6,8 @@ import {
   TextInput,
   StyleSheet,
   Pressable,
+  SafeAreaView,
+  ScrollView,
 } from "react-native";
 import Logo from "../components/Logo";
 import { ListItem } from "@rneui/themed";
@@ -51,69 +53,79 @@ export default FoodList = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Logo />
-      <Text style={styles.baseText}>Calories Counter</Text>
-      <TextInput
-        style={styles.customInput}
-        clearButtonMode="always"
-        placeholder="Search food..."
-        leftIcon={{ type: "font-awesome", name: "search" }}
-        value={query}
-        onChangeText={(queryText) => setQuery(queryText)}
-      />
+    <ScrollView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+      }}
+    >
+      <View style={styles.container}>
+        <Logo />
+        <Text style={styles.baseText}>Calories Counter</Text>
+        <TextInput
+          style={styles.customInput}
+          clearButtonMode="always"
+          placeholder="Search food..."
+          leftIcon={{ type: "font-awesome", name: "search" }}
+          value={query}
+          onChangeText={(queryText) => setQuery(queryText)}
+        />
 
-      <Pressable onPress={getFood} style={styles.buttonStyle}>
-        <Text style={styles.textStyle}> Add Food </Text>
-      </Pressable>
+        <Pressable onPress={getFood} style={styles.buttonStyle}>
+          <Text style={styles.textStyle}> Add Food </Text>
+        </Pressable>
 
-      {!errorMsg.length == 0 ? (
-        <View
-          style={{
-            flex: 1,
-            padding: 30,
-            alignItems: "center",
-            paddingBottom: 10,
-          }}
-        >
-          <Text style={{ fontSize: 18, color: "red" }}>{errorMsg}</Text>
-        </View>
-      ) : null}
-      <Text style={styles.total}> Total: {total} kcal </Text>
+        {!errorMsg.length == 0 ? (
+          <View
+            style={{
+              flex: 1,
+              padding: 30,
+              alignItems: "center",
+              paddingBottom: 10,
+            }}
+          >
+            <Text style={{ fontSize: 18, color: "red" }}>{errorMsg}</Text>
+          </View>
+        ) : null}
+        <Text style={styles.total}> Total: {total} kcal </Text>
+        <SafeAreaView style={{ flex: 1 }}>
+          <FlatList
+            style={{ width: 300 }}
+            data={data}
+            keyExtractor={(item) => item.name}
+            renderItem={({ item }) => (
+              <ListItem bottomDivider>
+                <ListItem.Content>
+                  <ListItem.Title style={styles.listItemText}>
+                    {capitalize(item.name)}
+                  </ListItem.Title>
+                  <ListItem.Subtitle>
+                    Calories: {item.calories} kcal
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle>Sugar: {item.sugar_g} g</ListItem.Subtitle>
+                  <ListItem.Subtitle>
+                    Protein: {item.protein_g} g
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle>
+                    Saturated Fat: {item.fat_saturated_g} g
+                  </ListItem.Subtitle>
 
-      <FlatList
-        style={{ width: 300 }}
-        data={data}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <ListItem bottomDivider>
-            <ListItem.Content>
-              <ListItem.Title style={styles.listItemText}>
-                {capitalize(item.name)}
-              </ListItem.Title>
-              <ListItem.Subtitle>
-                Calories: {item.calories} kcal
-              </ListItem.Subtitle>
-              <ListItem.Subtitle>Sugar: {item.sugar_g} g</ListItem.Subtitle>
-              <ListItem.Subtitle>Protein: {item.protein_g} g</ListItem.Subtitle>
-              <ListItem.Subtitle>
-                Saturated Fat: {item.fat_saturated_g} g
-              </ListItem.Subtitle>
-
-              <ListItem.Subtitle>
-                Total Fat: {item.fat_total_g} g
-              </ListItem.Subtitle>
-              <ListItem.Subtitle>
-                Cholesterol: {item.cholesterol_mg} mg
-              </ListItem.Subtitle>
-              <ListItem.Subtitle>
-                Carbohydrates: {item.carbohydrates_total_g} g
-              </ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
-        )}
-      />
-    </View>
+                  <ListItem.Subtitle>
+                    Total Fat: {item.fat_total_g} g
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle>
+                    Cholesterol: {item.cholesterol_mg} mg
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle>
+                    Carbohydrates: {item.carbohydrates_total_g} g
+                  </ListItem.Subtitle>
+                </ListItem.Content>
+              </ListItem>
+            )}
+          />
+        </SafeAreaView>
+      </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
