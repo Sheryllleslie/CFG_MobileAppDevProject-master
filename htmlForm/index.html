@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Fit LOSE IT! contact form</title>
+    <link
+      href="//fonts.googleapis.com/css?family=Roboto:400,500,300"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link rel="stylesheet" href="style.css">
+   
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('2eqnOshSBm43ft8hl');
+        })();
+
+        function sendMail(params){
+          
+          const tempParams={
+                from_name: document.getElementById('user_email').value,
+                user_name: document.getElementById('user_name').value,
+                user_surname: document.getElementById('user_surname').value,
+                user_email: document.getElementById('user_email').value,
+                message: document.getElementById('message').value
+            };
+            emailjs.send('service_4re0nin', 
+            'template_m8dx823', tempParams)
+            .then(function(res){
+              console.log('success', res.status)
+            })
+        }
+    </script>
+
+  </head>
+  <body class="container">
+<!-- FORM ------------------------>
+    <div id="content" class="imageBackr">
+      <img src="cover.png" />
+        <form onSubmit={sendEmail} class="formContainer">
+            <label class="text">Contact us</label>
+            <p>Please fill out the form</p>
+            <input type="text" name="user_name" id="user_name" minLength="3" placeholder="Enter first name" class="text" required /><br>
+        
+            <input type="text" name="user_surname" id="user_surname" minLength="3" placeholder="Enter last name" class="text" required /><br>
+        
+            <input type="email" name="user_email" id="user_email" minLength="3" placeholder="Enter your email" class="text" required /><br>
+        
+            <textarea name="message" id="message" maxLength="1000" placeholder="Enter your message. Max 1000 characters" class="text"></textarea>
+            
+            <button class="button" type="submit" onclick="sendMail()">Submit</button>    
+        </form>
+        
+    </div>
+  </body>
+</html>
