@@ -4,6 +4,7 @@ import { View, StyleSheet, Text, ScrollView } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import Logo from '../components/Logo';
 
 const Register = () => {
   const navigation = useNavigation();
@@ -48,7 +49,8 @@ console.log(username, email, password, passwordRepeat)
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <StatusBar style="auto" />
+        <Logo />
+      
         <Text style={styles.title}>Create an account</Text>
 
         <CustomInput
@@ -56,7 +58,6 @@ console.log(username, email, password, passwordRepeat)
           type="text"
           autoCapitalize="none"
           name="username"
-          // value={username}
           setValue={setUsername}
           onChangeText={changeHandler}
         />
@@ -64,7 +65,6 @@ console.log(username, email, password, passwordRepeat)
           placeholder="Email"
           type="email"
           autoCapitalize="none"
-          // value={email}
           setValue={setEmail}
           onChangeText={changeHandler}
         />
@@ -100,6 +100,7 @@ console.log(username, email, password, passwordRepeat)
           onPress={onSignInPressed}
           type="TERTIARY"
         />
+        <StatusBar style="auto" />
       </View>
     </ScrollView>
   );
@@ -109,9 +110,10 @@ console.log(username, email, password, passwordRepeat)
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    minHeight: 900,
     alignItems: "center",
-    padding: 30,
-    background: "white",
+    backgroundColor: "white",
+    marginBottom: 30,
   },
   title: {
     fontWeight: "bold",
@@ -122,6 +124,7 @@ const styles = StyleSheet.create({
   text: {
     color: "grey",
     marginVertical: 10,
+    marginHorizontal: 20,
   },
   link: {
     color: "red",
