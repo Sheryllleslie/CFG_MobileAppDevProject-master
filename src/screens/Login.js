@@ -11,13 +11,10 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-<<<<<<< Updated upstream
-  const [checkValidUsername, setCheckValidUsername] = useState(false);
-  const [checkValidPassword, setCheckValidPassword] = useState(false);
-=======
+
   const [checkValidUsername, setCheckValidUsername] = useState("");
   const [checkValidPassword, setCheckValidPassword] = useState("");
->>>>>>> Stashed changes
+
 
   const onSignInPressed = () => {
     console.warn("Login");
@@ -25,29 +22,13 @@ const Login = () => {
     const checkUsername = checkUsernameValidity(username);
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
-<<<<<<< Updated upstream
-=======
-      console.log(checkPassword);
->>>>>>> Stashed changes
+
       navigation.navigate("Main");
     } else {
       navigation.navigate("Login");
     }
   };
 
-<<<<<<< Updated upstream
-  // const onForgotPasswordPressed = () => {
-  //   console.warn("forgot password");
-
-  //   navigation.navigate("Reset Password"); // here you will pass a name from navigation container
-  // };
-
-  // const onSignUpPressed = () => {
-  //   console.warn("create an account");
-
-  //   navigation.navigate("Register");
-  // };
-=======
   const onForgotPasswordPressed = () => {
     console.warn("forgot password");
 
@@ -59,7 +40,7 @@ const Login = () => {
 
     navigation.navigate("Register");
   };
->>>>>>> Stashed changes
+
 
   const handleCheckUsername = (text) => {
     if (setUsername(text) > 3) {
@@ -123,10 +104,7 @@ const Login = () => {
       return <Text style={styles.errormsg}></Text>;
     }
   };
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -139,11 +117,6 @@ const Login = () => {
           placeholder="Username"
           value={username}
           autocapitalize="none"
-<<<<<<< Updated upstream
-          //   setValue={setUsername}
-          //   onChangeText={(text)=>setUsername(text)}
-=======
->>>>>>> Stashed changes
           onChangeText={(text) => handleCheckUsername(text)}
         />
         {checkUsernameValidity(username) ? (
@@ -159,47 +132,17 @@ const Login = () => {
           onChangeText={(text) => handleCheckPassword(text)}
         />
 
-<<<<<<< Updated upstream
-        <Button
-          onPress={onSignInPressed}
-          //   onPress={() => {console.log('from button', checkUsernameValidity(username))}}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-
-        {checkUsernameValidity(username) ? (
-          <Text style={styles.errormsg}>{checkUsernameValidity(username)}</Text>
-        ) : (
-          <Text style={styles.errormsg}></Text>
-        )}
 
         {checkPasswordValidity(password) ? (
           <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
         ) : (
           <Text style={styles.errormsg}></Text>
         )}
-
-        {/* <CustomInput style={{width: '80%'}}
-        name='password'
-          placeholder="Password"
-          value={password}
-          autocapitalize="none"
-          secureTextEntry={true}
-          onChangeText={(text)=>handleCheckPassword(text)}
-        /> */}
-
-        {/* <CustomButton text="Log In" onPress={onSignInPressed} /> */}
-        {/*    <CustomButton
-=======
-        {checkPasswordValidity(password) ? (
-          <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
-        ) : null}
+  
 
         <CustomButton text="Log In" onPress={onSignInPressed} />
 
         <CustomButton
->>>>>>> Stashed changes
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
