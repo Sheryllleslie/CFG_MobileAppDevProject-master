@@ -14,13 +14,7 @@ const CustomInput = ({ placeholder }) => {
 };
 
 const styles = StyleSheet.create ({
-    // container: {
-    //     // backgroundColor: 'orange',
-    //     // width: '80%',
 
-    //     // paddingHorizontal: 10,
-    //     // marginVertical: 10,
-    // },
     input: {
         backgroundColor: "white",
         width: 260,

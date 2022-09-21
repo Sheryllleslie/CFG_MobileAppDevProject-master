@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  View,
-  StyleSheet,
-  Text,
-  ScrollView,
-  Alert,
-  Button,
-  TextInput,
-} from "react-native";
+import { View, StyleSheet, Text, ScrollView, TextInput } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
@@ -19,8 +11,13 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+<<<<<<< Updated upstream
   const [checkValidUsername, setCheckValidUsername] = useState(false);
   const [checkValidPassword, setCheckValidPassword] = useState(false);
+=======
+  const [checkValidUsername, setCheckValidUsername] = useState("");
+  const [checkValidPassword, setCheckValidPassword] = useState("");
+>>>>>>> Stashed changes
 
   const onSignInPressed = () => {
     console.warn("Login");
@@ -28,12 +25,17 @@ const Login = () => {
     const checkUsername = checkUsernameValidity(username);
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
+<<<<<<< Updated upstream
+=======
+      console.log(checkPassword);
+>>>>>>> Stashed changes
       navigation.navigate("Main");
     } else {
       navigation.navigate("Login");
     }
   };
 
+<<<<<<< Updated upstream
   // const onForgotPasswordPressed = () => {
   //   console.warn("forgot password");
 
@@ -45,6 +47,19 @@ const Login = () => {
 
   //   navigation.navigate("Register");
   // };
+=======
+  const onForgotPasswordPressed = () => {
+    console.warn("forgot password");
+
+    navigation.navigate("Reset Password"); // here you will pass a name from navigation container
+  };
+
+  const onSignUpPressed = () => {
+    console.warn("create an account");
+
+    navigation.navigate("Register");
+  };
+>>>>>>> Stashed changes
 
   const handleCheckUsername = (text) => {
     if (setUsername(text) > 3) {
@@ -108,7 +123,10 @@ const Login = () => {
       return <Text style={styles.errormsg}></Text>;
     }
   };
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -117,24 +135,31 @@ const Login = () => {
         <Text style={styles.text}>Login</Text>
 
         <TextInput
+          style={styles.input}
           placeholder="Username"
           value={username}
           autocapitalize="none"
+<<<<<<< Updated upstream
           //   setValue={setUsername}
           //   onChangeText={(text)=>setUsername(text)}
+=======
+>>>>>>> Stashed changes
           onChangeText={(text) => handleCheckUsername(text)}
         />
+        {checkUsernameValidity(username) ? (
+          <Text style={styles.errormsg}>{checkUsernameValidity(username)}</Text>
+        ) : null}
 
         <TextInput
+          style={styles.input}
           placeholder="Password"
           value={password}
           autocapitalize="none"
-          //   secureTextEntry={true}
-          //   setValue={setUsername}
-          //   onChangeText={(text)=>setUsername(text)}
+          secureTextEntry={true}
           onChangeText={(text) => handleCheckPassword(text)}
         />
 
+<<<<<<< Updated upstream
         <Button
           onPress={onSignInPressed}
           //   onPress={() => {console.log('from button', checkUsernameValidity(username))}}
@@ -166,15 +191,25 @@ const Login = () => {
 
         {/* <CustomButton text="Log In" onPress={onSignInPressed} /> */}
         {/*    <CustomButton
+=======
+        {checkPasswordValidity(password) ? (
+          <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
+        ) : null}
+
+        <CustomButton text="Log In" onPress={onSignInPressed} />
+
+        <CustomButton
+>>>>>>> Stashed changes
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
+
         <CustomButton
           text="Don't you have an account? Create it"
           onPress={onSignUpPressed}
           type="TERTIARY"
-        /> */}
+        />
       </View>
     </ScrollView>
   );
@@ -183,7 +218,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    minHeight: 500,
+    minHeight: 600,
     alignItems: "center",
     backgroundColor: "white",
   },
@@ -196,6 +231,23 @@ const styles = StyleSheet.create({
   errormsg: {
     color: "red",
     fontSize: 10,
+  },
+
+  input: {
+    backgroundColor: "white",
+    width: 260,
+    minWidth: "80%",
+    borderColor: "grey",
+    borderTopWidth: 1,
+    borderRightWidth: 3,
+    borderBottomWidth: 3,
+    borderLeftWidth: 1,
+    elevation: 8,
+    shadowOffset: { width: 2, height: 2 },
+    shadowColor: "#7DE38D",
+    shadowOpacity: 1,
+    padding: 10,
+    marginTop: 20,
   },
 });
 

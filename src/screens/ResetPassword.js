@@ -47,7 +47,8 @@ const ResetPassword = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    minHeight: 500,
+    height: '100%',
+    minHeight: 600,
     alignItems: "center",
     backgroundColor: "white",
   },

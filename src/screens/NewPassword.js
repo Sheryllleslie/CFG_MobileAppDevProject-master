@@ -31,6 +31,7 @@ const NewPassword = () => {
         <CustomInput placeholder="Code" value={code} setValue={setCode} />
         <CustomInput
           placeholder="New Password"
+          secureTextEntry={true}
           value={newPassword}
           setValue={setNewPassword}
         />
@@ -49,8 +50,9 @@ const NewPassword = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    minHeight: '100%',
+    height:1000,
     alignItems: "center",
-    padding: 30,
     backgroundColor: "white",
   },
   title: {
