@@ -19,32 +19,36 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [checkValidUsername, setCheckValidUsername] = useState(false);
-  const [checkValidPassword, setCheckValidPassword] = useState(false);
+  const [checkValidUsername, setCheckValidUsername] = useState('');
+  const [checkValidPassword, setCheckValidPassword] = useState('');
 
   const onSignInPressed = () => {
     console.warn("Login");
 
-    const checkUsername = checkUsernameValidity(username);
+    if (checkUsernameValidity(username)) {
+      console.log("this is from function", username);
+    }
+    const checkUsername = checkUsernameValidity(username)
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
-      navigation.navigate("Main");
-    } else {
-      navigation.navigate("Login");
+      navigation.navigate('Main');
+   } else {
+      null;
     }
   };
 
-  // const onForgotPasswordPressed = () => {
-  //   console.warn("forgot password");
+    
+    const onForgotPasswordPressed = () => {
+      console.warn("forgot password");
 
-  //   navigation.navigate("Reset Password"); // here you will pass a name from navigation container
-  // };
+      navigation.navigate("Reset Password"); // here you will pass a name from navigation container
+    };
 
-  // const onSignUpPressed = () => {
-  //   console.warn("create an account");
+    const onSignUpPressed = () => {
+      console.warn("create an account");
 
-  //   navigation.navigate("Register");
-  // };
+      navigation.navigate("Register");
+    };
 
   const handleCheckUsername = (text) => {
     if (setUsername(text) > 3) {
@@ -107,8 +111,9 @@ const Login = () => {
     } else {
       return <Text style={styles.errormsg}></Text>;
     }
-  };
+  
 
+  }
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
@@ -135,13 +140,15 @@ const Login = () => {
           onChangeText={(text) => handleCheckPassword(text)}
         />
 
-        <Button
-          onPress={onSignInPressed}
+        {/* <Button
+          onPress={() => {
+            console.log("from button", checkPasswordValidity(password));
+          }}
           //   onPress={() => {console.log('from button', checkUsernameValidity(username))}}
           title="Learn More"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
-        />
+        /> */}
 
         {checkUsernameValidity(username) ? (
           <Text style={styles.errormsg}>{checkUsernameValidity(username)}</Text>
@@ -164,8 +171,10 @@ const Login = () => {
           onChangeText={(text)=>handleCheckPassword(text)}
         /> */}
 
-        {/* <CustomButton text="Log In" onPress={onSignInPressed} /> */}
-        {/*    <CustomButton
+       
+
+        <CustomButton text="Log In" onPress={onSignInPressed} />
+       {/*  <CustomButton
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
