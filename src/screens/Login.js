@@ -19,9 +19,6 @@ const Login = () => {
   const onSignInPressed = () => {
     console.warn("Login");
 
-    if (checkUsernameValidity(username)) {
-      console.log("this is from function", username);
-    }
     const checkUsername = checkUsernameValidity(username)
     const checkPassword = checkPasswordValidity(password);
     if (checkPassword && checkUsername) {
@@ -139,16 +136,10 @@ const Login = () => {
           onChangeText={(text) => handleCheckPassword(text)}
         />
 
-        {checkUsernameValidity(username) ? (
-          <Text style={styles.errormsg}>{checkUsernameValidity(username)}</Text>
-        ) : (
-          <Text style={styles.errormsg}></Text>
-        )}
-
         {checkPasswordValidity(password) ? (
           <Text style={styles.errormsg}>{checkPasswordValidity(password)}</Text>
         ) : (
-          <Text style={styles.errormsg}></Text>
+          null
         )}
   
 
