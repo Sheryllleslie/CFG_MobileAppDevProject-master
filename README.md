@@ -64,7 +64,7 @@ Objectives of the app's prototype:
 Future aims are:
 
 - more days added
-- a submission of calories calculation 
+- a submission of calories calculation
 - a possibility to share on Facebook, Instagram or with friends
 
 ## Customer application instruction - background
@@ -111,10 +111,10 @@ There is a logout button, which will take you to login page.
 To run application on the test mode, there are a few requirements.
 We will list software and versions required, otherwise there may be issue with the testing.
 Please remember that:
-* Run **npm install** when you downlad the project for the first time.
 
-* Run **npm start** to start the server.
+- Run **npm install** when you downlad the project for the first time.
 
+- Run **npm start** to start the server.
 
 ### 1.1 Software
 
@@ -137,6 +137,11 @@ ReactNative and its library listed below:
 `npm install react-native`
 `npm install react-native-webviewreact-native-webview`
 `npm install react-native-reanimated`
+`npm i expo-sensors`
+`npx expo install expo-sensors`
+`npm i react-native-svg`
+`npm install react-native-circular-progress-indicator`
+`npx expo install react-native-svg@12.3.0`
 
 NB: no version restrictions. It is always recommended to have the latest, unless otherwise stated.
 Please bear in mind that sometimes you might have to re-install packages.
@@ -146,7 +151,7 @@ Please bear in mind that sometimes you might have to re-install packages.
 Here, we would like to give you overview of the code structure and for what it is responsible.
 
 1\. App -
-Is responsble for running stack navigation, which consists of login, erset password and registration and allows to connect with bottom navigation, where there are home button, check meal button, contact form and logout. 
+Is responsble for running stack navigation, which consists of login, erset password and registration and allows to connect with bottom navigation, where there are home button, check meal button, contact form and logout.
 The logout will transfer you directly to Login page.
 
 2\. Back-end & Front-end - are written in React Native using JavaScript language. However, the contact form uses HTML and CSS to ensure that you are able to send ann email.
@@ -166,11 +171,6 @@ Unit test works similar to JEST, so one or anothe would be used.
 We would use mocking to check if our API supplies correctly.
 
 We would test components (UI components), which means we will check if what we render it is not broken and is delivered in a good quality to the Customer. For example Test Renderer.
-
-
-
-
-
 
 4\. User testing and back-end testing on different machines to ensure the code works wherever is used.
 
@@ -199,4 +199,3 @@ Our challenges were:
 - not knowing the technologies and theirs limitations
 - not knowing API routes we implemented
 - problem with understanding principles of React Native usage and its components.
-
